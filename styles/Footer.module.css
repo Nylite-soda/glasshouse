@@ -1,0 +1,355 @@
+.footerContainer {
+  background: linear-gradient(
+    135deg,
+    var(--mantine-color-myColor-9) 100%,
+    var(--mantine-color-myColor-8) 0%
+  );
+  padding: 3rem 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.footerContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+.footerContent {
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem;
+}
+
+.footerSection {
+  animation: slideInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.footerSection:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.footerSection:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.footerSection:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.footerSection:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Company Logo Section */
+.companySection {
+  margin-bottom: 1.5rem;
+}
+
+.logoGroup {
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.logoGroup:hover {
+  transform: scale(1.05);
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--mantine-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Address Section */
+.addressSection {
+  opacity: 0.9;
+}
+
+.sectionTitle {
+  position: relative;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--mantine-color-myColor-4);
+  border-radius: 1px;
+  transition: width 0.3s ease;
+}
+
+.footerSection:hover .sectionTitle::after {
+  width: 50px;
+}
+
+.addressText {
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: default;
+}
+
+.addressText:hover {
+  color: rgba(255, 255, 255, 1) !important;
+  transform: translateX(4px);
+}
+
+/* Footer Links */
+.footerLink {
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.25rem 0;
+  display: inline-block;
+}
+
+.footerLink::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--mantine-color-myColor-4);
+  transition: width 0.3s ease;
+}
+
+.footerLink:hover {
+  color: white !important;
+  transform: translateX(4px);
+}
+
+.footerLink:hover::before {
+  width: 100%;
+}
+
+/* Newsletter Section */
+.newsletterForm {
+  margin-bottom: 1.5rem;
+}
+
+.newsletterGroup {
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+.newsletterInput {
+  flex: 1;
+  animation: pulse 2s infinite;
+}
+
+.newsletterInput input {
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.newsletterInput:focus-within input {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  transform: scale(1.02);
+}
+
+.newsletterButton {
+  background: var(--mantine-color-myColor-6);
+  border: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletterButton::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.newsletterButton:hover {
+  background: var(--mantine-color-myColor-5);
+  transform: scale(1.05);
+}
+
+.newsletterButton:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+.newsletterButton:active {
+  transform: scale(0.95);
+}
+
+/* Social Icons */
+.socialGroup {
+  gap: 0.75rem;
+}
+
+.socialIcon {
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.socialIcon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--mantine-color-myColor-6);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.socialIcon:hover {
+  color: white;
+  transform: scale(1.2) rotate(5deg);
+}
+
+.socialIcon:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.socialIcon:nth-child(1):hover {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+.socialIcon:nth-child(3):hover {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* Footer Bottom */
+.footerBottom {
+  margin-top: 3rem;
+  padding: 1.5rem 0;
+  border-top: 1.2px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  /* background: rgba(255, 255, 255, 0.05); */
+}
+
+.bottomContent {
+  animation: slideInUp 0.6s ease-out 0.5s both;
+}
+
+.bottomLogo {
+  /* opacity: 0.8; */
+  transition: opacity 0.3s ease;
+  color: white;
+}
+
+.bottomLogo:hover {
+  opacity: 1;
+}
+
+.copyrightText {
+  transition: color 0.3s ease;
+}
+
+.copyrightText:hover {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+/* Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footerContainer {
+    padding: 2rem 0 0;
+  }
+
+  .footerContent {
+    padding: 0 1rem;
+  }
+
+  .bottomContent {
+    flex-direction: column;
+    gap: 1rem;
+    /* text-align: center; */
+  }
+
+  .newsletterGroup {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .socialGroup {
+    justify-content: center;
+  }
+
+  .addressText {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerContainer {
+    padding: 1.5rem 0 0;
+  }
+
+  .companySection {
+    /* text-align: center; */
+    margin-bottom: 2rem;
+  }
+
+  .sectionTitle::after {
+    left: 10%;
+    transform: translateX(-50%);
+  }
+
+  .footerSection:hover .sectionTitle::after {
+    width: 40px;
+  }
+}

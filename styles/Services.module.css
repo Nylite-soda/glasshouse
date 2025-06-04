@@ -1,0 +1,342 @@
+.servicesSection {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.servicesSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 50%,
+      var(--mantine-color-myColor-2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      var(--mantine-color-myColor-1) 0%,
+      transparent 50%
+    );
+  opacity: 0.3;
+  z-index: 0;
+}
+
+/* Header Styles */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.mainTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    var(--mantine-color-myColor-7),
+    var(--mantine-color-myColor-9)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.mainTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--mantine-color-myColor-5),
+    var(--mantine-color-myColor-7)
+  );
+  border-radius: 2px;
+  animation: expandWidth 1s ease-out 0.5s both;
+}
+
+.subtitle {
+  max-width: 1000px;
+  margin: 0 auto;
+  color: var(--mantine-color-dark-8, #1e293b);
+  line-height: 1.6;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 0.3s both;
+}
+
+/* Grid Layout */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Service Card Styles */
+.serviceCard {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  /* border: 1px solid var(--mantine-color-myColor-2); */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: slideInUp 0.6s ease-out both;
+  cursor: pointer;
+}
+
+.serviceCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.3s ease;
+  z-index: 1;
+}
+
+.serviceCard:hover::before {
+  left: 100%;
+}
+
+.serviceCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 0 1px var(--mantine-color-myColor-3);
+}
+
+/* Image Section */
+.imageSection {
+  position: relative;
+  overflow: hidden;
+}
+
+.cardImage {
+  height: 200px;
+  transition: transform 0.4s ease;
+  filter: brightness(0.9);
+}
+
+.serviceCard:hover .cardImage {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+.iconOverlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  padding: 0.75rem;
+  color: var(--mantine-color-myColor-6);
+  transition: all 0.3s ease;
+  transform: scale(0.8);
+  opacity: 0.8;
+}
+
+.serviceCard:hover .iconOverlay {
+  transform: scale(1) rotate(360deg);
+  opacity: 1;
+  background: var(--mantine-color-myColor-6);
+  color: white;
+}
+
+/* Card Content */
+.cardTitle {
+  color: var(--mantine-color-myColor-8);
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.serviceCard:hover .cardTitle {
+  color: var(--mantine-color-myColor-6);
+}
+
+.cardDescription {
+  color: var(--mantine-color-gray-7);
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.serviceCard:hover .cardDescription {
+  color: var(--mantine-color-gray-8);
+}
+
+.learnMoreBtn {
+  background: transparent;
+  color: var(--mantine-color-myColor-6);
+  border: 2px solid var(--mantine-color-myColor-3);
+  transition: all 0.3s ease;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+.learnMoreBtn:hover {
+  background: var(--mantine-color-myColor-6);
+  color: white;
+  border-color: var(--mantine-color-myColor-6);
+  transform: translateY(-2px);
+}
+
+/* CTA Container */
+.ctaContainer {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.viewAllBtn {
+  background: linear-gradient(
+    135deg,
+    var(--mantine-color-myColor-6),
+    var(--mantine-color-myColor-8)
+  );
+  border: none;
+  padding: 1rem 2.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.viewAllBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.viewAllBtn:hover::before {
+  left: 100%;
+}
+
+.viewAllBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80px;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .mainTitle {
+    font-size: 2.5rem;
+  }
+
+  .serviceCard {
+    animation-duration: 0.4s;
+  }
+
+  /* Reduce animations on mobile for performance */
+  .serviceCard:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  .serviceCard:hover .cardImage {
+    transform: scale(1.05);
+  }
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .serviceCard,
+  .cardImage,
+  .iconOverlay,
+  .learnMoreBtn,
+  .viewAllBtn {
+    transition: none;
+    animation: none;
+  }
+
+  .serviceCard:hover {
+    transform: none;
+  }
+
+  .serviceCard:hover .cardImage {
+    transform: none;
+  }
+
+  .serviceCard:hover .iconOverlay {
+    transform: none;
+  }
+}

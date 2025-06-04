@@ -1,0 +1,409 @@
+/* BlogSection.module.css */
+.blogSection {
+  padding: 4rem;
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+}
+
+.blogSection:nth-child(even) {
+  background: #f8f9fa;
+}
+
+.blogSection.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6c757d;
+  font-size: 1.1rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 2px dashed #dee2e6;
+}
+
+/* Blog Card Styles */
+.blogCard {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  /* border: 1px solid #e9ecef; */
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+}
+
+.blogCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: var(--mantine-color-myColor-9);
+}
+
+.blogCard:hover .hoverEffect {
+  opacity: 1;
+}
+
+.blogCard:hover .cardImage {
+  transform: scale(1.05);
+}
+
+.blogCard.small {
+  min-height: 200px !important;
+}
+
+.blogCard.medium {
+  min-height: 320px !important;
+}
+
+.blogCard.large {
+  min-height: 450px !important;
+}
+
+/* Image Container */
+.imageContainer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* max-height: 320px; */
+  /* aspect-ratio: 4/3 !important; */
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.blogCard:hover .imageOverlay {
+  opacity: 1;
+}
+
+/* Card Content */
+.cardContent {
+  max-height: 250px;
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.blogCard.small .cardContent {
+  padding: 1rem;
+}
+
+.blogCard.large .cardContent {
+  padding: 2rem;
+}
+
+.categoryBadge {
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 20px;
+  padding: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.categoryBadge:hover {
+  transform: scale(1.05);
+}
+
+.metaInfo {
+  color: var(--mantine-color-gray-6);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: #212529;
+  margin: 0.75rem 0;
+  flex: 1;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.blogCard.small .cardTitle {
+  font-size: 1.2rem;
+  /* font-size: 0.95rem; */
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+
+.blogCard.large .cardTitle {
+  font-size: 1.2rem;
+  /* font-size: 1.5rem; */
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 1rem 0;
+}
+
+.blogCard:hover .cardTitle {
+  color: var(--mantine-color-myColor-7);
+}
+
+.publishTime {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f3f4;
+  font-size: 0.75rem;
+  color: var(--mantine-color-gray-6);
+  font-weight: 500;
+}
+
+.hoverEffect {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.5s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.blogCard:hover .hoverEffect {
+  left: 100%;
+  opacity: 1;
+}
+
+/* Featured Layout - Matching Your Image */
+.featuredLayout {
+  margin-bottom: 2rem;
+}
+
+.sideCards {
+  height: 100%;
+}
+
+.sideCards .blogCard {
+  height: auto;
+  min-height: 140px;
+}
+
+.sideCards .blogCard .cardContent {
+  padding: 1rem;
+}
+
+.sideCards .cardTitle {
+  font-size: 1.2rem;
+  /* font-size: 0.9rem; */
+  line-height: 1.3;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.sideCards .publishTime {
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Regular Grid Layout */
+.blogGrid {
+  gap: 1.5rem;
+}
+
+/* Masonry Layout */
+.masonryGrid {
+  columns: 3;
+  column-gap: 1.5rem;
+  column-fill: balance;
+}
+
+.masonryItem {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Background Decoration */
+.backgroundDecor {
+  position: absolute;
+  top: 0;
+  right: -10%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 123, 255, 0.03) 0%,
+    rgba(118, 75, 162, 0.03) 100%
+  );
+  transform: skewX(-15deg);
+  pointer-events: none;
+}
+
+/* Loading Animation */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -200px;
+  width: 200px;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .blogSection {
+    padding: 3rem 0;
+  }
+
+  .masonryGrid {
+    columns: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .blogSection {
+    padding: 2rem 0;
+  }
+
+  .featuredLayout {
+    margin-bottom: 1.5rem;
+  }
+
+  .blogCard.large .cardTitle {
+    font-size: 1.25rem;
+  }
+
+  .blogCard.large .cardContent {
+    padding: 1.5rem;
+  }
+
+  .sideCards {
+    gap: 1rem;
+  }
+
+  .blogGrid {
+    gap: 1rem;
+  }
+
+  .masonryGrid {
+    columns: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardContent {
+    padding: 1rem;
+  }
+
+  .blogCard.large .cardContent {
+    padding: 1.25rem;
+  }
+
+  .blogCard.large .cardTitle {
+    font-size: 1.1rem;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .sideCards .cardTitle {
+    font-size: 0.75rem;
+  }
+}
+
+/* Focus styles for accessibility */
+.blogCard:focus-visible {
+  outline: 3px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+/* @media (prefers-color-scheme: dark) {
+  .blogCard {
+    background: #1a1a1a;
+    border-color: #333;
+    color: #ffffff;
+  }
+
+  .blogCard:hover {
+    border-color: #007bff;
+    box-shadow: 0 12px 40px rgba(0, 123, 255, 0.2);
+  }
+
+  .cardTitle {
+    color: #ffffff;
+  }
+
+  .blogCard:hover .cardTitle {
+    color: #66b3ff;
+  }
+
+  .publishTime {
+    border-color: #333;
+  }
+
+  .blogSection {
+    background: #0d1117;
+  }
+
+  .blogSection:nth-child(even) {
+    background: #161b22;
+  }
+} */
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .blogCard,
+  .cardImage,
+  .hoverEffect {
+    transition: none;
+  }
+}

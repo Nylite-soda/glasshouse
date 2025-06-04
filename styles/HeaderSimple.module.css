@@ -1,0 +1,436 @@
+.header {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90vw, 1200px);
+  height: 60px;
+  z-index: 1000;
+  transition: transform 0.2s ease, background-color 0.2s ease,
+    backdrop-filter 0.2s ease;
+  border-radius: 2rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: color-mix(
+    in srgb,
+    var(--mantine-color-myColor-9) 85%,
+    transparent 15%
+  );
+  border: 1px solid
+    color-mix(in srgb, var(--mantine-color-myColor-7) 40%, transparent 60%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0
+      color-mix(in srgb, var(--mantine-color-myColor-1) 20%, transparent 80%);
+}
+
+.header.scrolled {
+  top: 0.5rem;
+  background: color-mix(
+    in srgb,
+    var(--mantine-color-myColor-9) 90%,
+    transparent 10%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-color: color-mix(
+    in srgb,
+    var(--mantine-color-myColor-7) 50%,
+    transparent 50%
+  );
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inner {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Simplified animated background gradient */
+.inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--mantine-color-myColor-5) 12%, transparent 88%),
+    transparent
+  );
+  transition: left 0.6s ease;
+  z-index: 0;
+}
+
+.inner:hover::before {
+  left: 100%;
+}
+
+/* Ensure content stays above the animated background */
+.inner > :global(*) {
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  z-index: 1001;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+  color: var(--mantine-color-myColor-1);
+  font-weight: 500;
+  font-size: 0.9rem;
+  overflow: hidden;
+  transform: translateY(0);
+}
+
+.linkText {
+  position: relative;
+  z-index: 2;
+  transition: color 0.2s ease;
+}
+
+/* Animated underline effect */
+.linkUnderline {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--mantine-color-myColor-2),
+    var(--mantine-color-myColor-1)
+  );
+  border-radius: 1px;
+  transition: transform 0.2s ease;
+}
+
+/* Simplified glow effect */
+.link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: color-mix(
+    in srgb,
+    var(--mantine-color-myColor-5) 15%,
+    transparent 85%
+  );
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.link:hover::before {
+  opacity: 1;
+}
+
+.link:hover .linkText {
+  color: var(--mantine-color-myColor-0);
+  transform: translateY(-1px);
+}
+
+.link:hover .linkUnderline {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px
+    color-mix(in srgb, var(--mantine-color-myColor-5) 20%, transparent 80%);
+}
+
+/* Active state styling */
+.link[data-active] .linkText {
+  color: var(--mantine-color-myColor-0);
+}
+
+.link[data-active] .linkUnderline {
+  transform: translateX(-50%) scaleX(1);
+  background: var(--mantine-color-myColor-1);
+  box-shadow: 0 0 8px
+    color-mix(in srgb, var(--mantine-color-myColor-5) 50%, transparent 50%);
+}
+
+.link[data-active] {
+  background: color-mix(
+    in srgb,
+    var(--mantine-color-myColor-5) 12%,
+    transparent 88%
+  );
+  border: 1px solid
+    color-mix(in srgb, var(--mantine-color-myColor-5) 25%, transparent 75%);
+  box-shadow: 0 2px 8px
+      color-mix(in srgb, var(--mantine-color-myColor-5) 18%, transparent 82%),
+    inset 0 1px 0
+      color-mix(in srgb, var(--mantine-color-myColor-1) 12%, transparent 88%);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ctaButton {
+  background: color-mix(
+    in srgb,
+    var(--mantine-color-myColor-1) 18%,
+    transparent 82%
+  ) !important;
+  border: 1px solid
+    color-mix(in srgb, var(--mantine-color-myColor-1) 30%, transparent 70%);
+  color: var(--mantine-color-myColor-0);
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1.5rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--mantine-color-myColor-1) 25%, transparent 75%),
+    transparent
+  );
+  transition: left 0.4s ease;
+}
+
+.ctaButton:hover::before {
+  left: 100%;
+}
+
+.ctaButton:hover {
+  background: color-mix(
+    in srgb,
+    var(--mantine-color-myColor-1) 25%,
+    transparent 75%
+  ) !important;
+  border-color: color-mix(
+    in srgb,
+    var(--mantine-color-myColor-1) 40%,
+    transparent 60%
+  );
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px
+    color-mix(in srgb, var(--mantine-color-myColor-9) 25%, transparent 75%);
+}
+
+.burger {
+  z-index: 1001;
+  transition: transform 0.3s ease;
+}
+
+.burger:hover {
+  transform: scale(1.1);
+}
+
+/* Mobile Menu Styles */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.mobileOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.mobileOverlayOpen {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobileMenu {
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90vw, 400px);
+  background: color-mix(
+    in srgb,
+    var(--mantine-color-myColor-9) 88%,
+    transparent 12%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid
+    color-mix(in srgb, var(--mantine-color-myColor-7) 40%, transparent 60%);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.mobileNavigation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.mobileNavigation .link {
+  width: 100%;
+  text-align: left;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+}
+
+.mobileActions {
+  padding-top: 1rem;
+  border-top: 1px solid
+    color-mix(in srgb, var(--mantine-color-myColor-1) 20%, transparent 80%);
+}
+
+.mobileCta {
+  background: color-mix(
+    in srgb,
+    var(--mantine-color-myColor-1) 18%,
+    transparent 82%
+  ) !important;
+  border: 1px solid
+    color-mix(in srgb, var(--mantine-color-myColor-1) 30%, transparent 70%);
+  color: var(--mantine-color-myColor-0);
+  font-weight: 600;
+  border-radius: 1rem;
+  padding: 0.75rem;
+}
+
+/* Simplified entrance animations */
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.link {
+  animation: slideInFromTop 0.4s ease forwards;
+}
+
+/* Reduced staggered animation delays */
+.link:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.link:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.link:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.link:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.link:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+/* Optimized for lower-end devices */
+@media (prefers-reduced-motion: reduce) {
+  .reducedMotion :global(*) {
+    animation-duration: 0.01s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01s !important;
+  }
+
+  .inner::before,
+  .ctaButton::before {
+    display: none;
+  }
+}
+
+/* Performance optimization for mobile devices */
+@media (max-width: 768px) {
+  .header {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .mobileMenu {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .inner::before {
+    display: none; /* Remove animated background on mobile */
+  }
+}
+
+/* Enhanced glass effect on hover */
+.header:hover {
+  background: color-mix(
+    in srgb,
+    var(--mantine-color-myColor-9) 88%,
+    transparent 12%
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--mantine-color-myColor-7) 45%,
+    transparent 55%
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
