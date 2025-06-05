@@ -12,6 +12,7 @@
 .imageColumn {
   position: relative;
   padding: clamp(1rem, 2vw, 1.5rem);
+  height: 100%;
 }
 
 .imageWrapper {
@@ -21,8 +22,7 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   transform: translateY(0);
   transition: transform 0.3s ease;
-  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
-  /* padding: 4px; */
+  height: 100%;
 }
 
 .imageWrapper:hover {
@@ -32,12 +32,12 @@
 .imageInner {
   border-radius: 12px;
   overflow: hidden;
+  height: 100%;
 }
 
 .image {
   width: 100%;
   height: 100%;
-  max-height: 500px;
   object-fit: cover;
   display: block;
 }
@@ -94,42 +94,256 @@
   transform: scale(1.05);
 }
 
+/* SIZE VARIANTS */
+
+/* Small size variant */
+.sizeSmall .aboutSection,
+.sizeSmall {
+  padding: clamp(1.5rem, 4vh, 2.5rem) 0;
+}
+
+.sizeSmall .grid {
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.sizeSmall .imageColumn {
+  padding: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.sizeSmall .contentColumn {
+  padding: clamp(0.5rem, 2vw, 1rem);
+}
+
+.sizeSmall .title {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.sizeSmall .titleUnderline {
+  width: 40px;
+  height: 3px;
+  bottom: -6px;
+}
+
+.sizeSmall .description {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  margin-top: clamp(0.75rem, 2vw, 1.25rem);
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+}
+
+.sizeSmall .button {
+  height: 42px;
+  padding-left: 24px;
+  padding-right: 24px;
+  font-size: 1rem;
+}
+
+.sizeSmall .imageWrapper {
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.sizeSmall .imageInner {
+  border-radius: 8px;
+}
+
+/* Medium size variant */
+.sizeMedium .aboutSection,
+.sizeMedium {
+  padding: clamp(2rem, 6vh, 3.5rem) 0;
+}
+
+.sizeMedium .grid {
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.sizeMedium .imageColumn {
+  padding: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+.sizeMedium .contentColumn {
+  padding: clamp(0.75rem, 2.5vw, 1.5rem);
+}
+
+.sizeMedium .title {
+  font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+  margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+.sizeMedium .titleUnderline {
+  width: 50px;
+  height: 3px;
+  bottom: -7px;
+}
+
+.sizeMedium .description {
+  font-size: clamp(0.95rem, 2.25vw, 1.125rem);
+  margin-top: clamp(1rem, 2.5vw, 2rem);
+  margin-bottom: clamp(1.5rem, 3.5vw, 2.25rem);
+}
+
+.sizeMedium .button {
+  height: 48px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 1.0625rem;
+}
+
+.sizeMedium .imageWrapper {
+  border-radius: 14px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.09);
+}
+
+.sizeMedium .imageInner {
+  border-radius: 10px;
+}
+
+/* Large size variant (original styles) */
+.sizeLarge .aboutSection,
+.sizeLarge {
+  padding: clamp(3rem, 8vh, 5rem) 0;
+}
+
+.sizeLarge .grid {
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.sizeLarge .imageColumn {
+  padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+.sizeLarge .contentColumn {
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.sizeLarge .title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.sizeLarge .titleUnderline {
+  width: 60px;
+  height: 4px;
+  bottom: -8px;
+}
+
+.sizeLarge .description {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.sizeLarge .button {
+  height: 54px;
+  padding-left: 38px;
+  padding-right: 38px;
+  font-size: 1.125rem;
+}
+
+.sizeLarge .imageWrapper {
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.sizeLarge .imageInner {
+  border-radius: 12px;
+}
+
 /* Mobile-specific styles */
 @media (max-width: 767px) {
   .button {
     width: 100%;
   }
 
-  .contentColumn {
+  .sizeSmall .contentColumn {
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .sizeSmall .imageColumn {
+    padding: clamp(0.25rem, 1vw, 0.5rem);
+  }
+
+  .sizeSmall .aboutSection,
+  .sizeSmall {
+    padding: clamp(1.25rem, 4vh, 2rem) 0;
+  }
+
+  .sizeMedium .contentColumn {
+    padding: clamp(1.25rem, 3.5vw, 2rem) clamp(0.75rem, 2.5vw, 1.25rem);
+  }
+
+  .sizeMedium .imageColumn {
+    padding: clamp(0.375rem, 1.5vw, 0.75rem);
+  }
+
+  .sizeMedium .aboutSection,
+  .sizeMedium {
+    padding: clamp(1.75rem, 5vh, 3rem) 0;
+  }
+
+  .sizeLarge .contentColumn {
     padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 3vw, 1.5rem);
   }
 
-  .imageColumn {
+  .sizeLarge .imageColumn {
     padding: clamp(0.5rem, 2vw, 1rem);
   }
 
-  .aboutSection {
+  .sizeLarge .aboutSection,
+  .sizeLarge {
     padding: clamp(2.5rem, 6vh, 4rem) 0;
   }
 }
 
 /* Tablet and desktop spacing */
 @media (min-width: 768px) {
-  .contentColumn {
+  .sizeSmall .contentColumn {
+    padding: clamp(0.75rem, 2vw, 1.5rem) clamp(0.5rem, 1.5vw, 1rem);
+  }
+
+  .sizeSmall .imageColumn {
+    padding: clamp(0.5rem, 1vw, 1rem);
+  }
+
+  .sizeMedium .contentColumn {
+    padding: clamp(1rem, 2.5vw, 2.25rem) clamp(0.75rem, 1.75vw, 1.5rem);
+  }
+
+  .sizeMedium .imageColumn {
+    padding: clamp(0.75rem, 1.5vw, 1.5rem);
+  }
+
+  .sizeLarge .contentColumn {
     padding: clamp(1.5rem, 3vw, 3rem) clamp(1rem, 2vw, 2rem);
   }
 
-  .imageColumn {
+  .sizeLarge .imageColumn {
     padding: clamp(1rem, 2vw, 2rem);
   }
 }
 
 @media (min-width: 1200px) {
-  .contentColumn {
+  .sizeSmall .contentColumn {
+    padding: clamp(1rem, 2vw, 2rem) clamp(0.75rem, 1.5vw, 1.5rem);
+  }
+
+  .sizeSmall .imageColumn {
+    padding: clamp(0.75rem, 1.5vw, 1.5rem);
+  }
+
+  .sizeMedium .contentColumn {
+    padding: clamp(1.5rem, 2.5vw, 3rem) clamp(1rem, 1.75vw, 2.25rem);
+  }
+
+  .sizeMedium .imageColumn {
+    padding: clamp(1rem, 1.75vw, 2.25rem);
+  }
+
+  .sizeLarge .contentColumn {
     padding: clamp(2rem, 3vw, 4rem) clamp(1.5rem, 2vw, 3rem);
   }
 
-  .imageColumn {
+  .sizeLarge .imageColumn {
     padding: clamp(1.5rem, 2vw, 3rem);
   }
 }

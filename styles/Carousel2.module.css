@@ -1,0 +1,293 @@
+.carouselContainer {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0rem 1rem 4rem;
+  position: relative;
+}
+
+.carouselHeader {
+  /* text-align: center; */
+  margin-bottom: 3rem;
+}
+
+.carouselTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--mantine-color-myColor-9, #0e3877);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.carouselSubtitle {
+  font-size: 1.125rem;
+  color: var(--mantine-color-myColor-6, #64748b);
+  max-width: 1000px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.carouselWrapper {
+  position: relative;
+  border-radius: var(--mantine-radius-lg, 16px);
+  padding: 3rem 2rem;
+  /* overflow: hidden; */
+}
+
+.carouselArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.carouselArrow:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+.carouselArrowLeft,
+.carouselArrowRight {
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--mantine-color-myColor-8, #1e293b);
+}
+
+.carouselArrowLeft:hover,
+.carouselArrowRight:hover {
+  background-color: var(--mantine-color-myColor-1, #f1f5f9);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Position arrows inside the carousel container */
+.carouselArrowLeft {
+  top: -8rem;
+  right: 13rem;
+}
+
+.carouselArrowRight {
+  top: -8rem;
+  right: 9rem;
+}
+
+.carouselItems {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* Changed to stretch for equal height */
+  flex-wrap: nowrap;
+  gap: 2rem;
+  height: 400px;
+  transition: all 0.5s ease;
+}
+
+/* Card styles with equal height */
+.carouselCard {
+  /* text-align: center; */
+  transition: transform 0.3s ease;
+  border-radius: var(--mantine-radius-md, 12px);
+  /* flex: 1; */
+  width: 320px;
+  /* width: 280px; */
+  max-width: 350px !important;
+  animation: slideInLeft 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
+  height: 100% !important; /* Ensure all cards have same height */
+  border: 1px solid var(--mantine-color-gray-3, #e2e8f0);
+  /* background: white; */
+}
+
+/* First card gets the primary blue background */
+.carouselCard.firstCard {
+  background: var(--mantine-color-myColor-9, #1e40af);
+  color: white;
+  border: 1px solid var(--mantine-color-myColor-8, #1e3a8a);
+}
+
+.carouselCard.firstCard .cardTitle {
+  color: white;
+}
+
+.carouselCard.firstCard .cardDescription {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.carouselCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.cardIconContainer {
+  display: flex;
+  /* justify-content: center; */
+  margin-bottom: 1.5rem;
+}
+
+.cardImage {
+  width: 48px;
+  height: 48px;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--mantine-radius-md, 12px);
+}
+
+.cardIcon {
+  transition: transform 0.3s ease;
+}
+
+.carouselCard:hover .cardIcon {
+  transform: scale(1.1);
+}
+
+.cardContent {
+  flex: 1; /* Allow content to grow and maintain equal height */
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--mantine-color-myColor-9, #0e3877);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.cardDescription {
+  font-size: 0.95rem;
+  color: var(--mantine-color-myColor-7, #1e293b);
+  line-height: 1.6;
+  margin: 0;
+  flex: 1; /* Allow description to fill remaining space */
+}
+
+.carouselDots {
+  margin-top: 2rem;
+}
+
+.carouselDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: var(--mantine-color-myColor-4, #cbd5e1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.carouselDot:hover {
+  background: var(--mantine-color-myColor-5, #94a3b8);
+  transform: scale(1.2);
+}
+
+.carouselDot.active {
+  background: var(--mantine-color-myColor-6, #3b82f6);
+  transform: scale(1.3);
+}
+
+/* Accessibility improvements */
+.carouselArrow:focus,
+.carouselDot:focus {
+  outline: 2px solid var(--mantine-color-myColor-6, #3b82f6);
+  outline-offset: 2px;
+}
+
+/* Animation for item entrance */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .carouselContainer {
+    padding: 2rem 1rem;
+  }
+
+  .carouselTitle {
+    font-size: 2rem;
+    color: var(--mantine-color-myColor-9, #0e3877);
+  }
+
+  .carouselSubtitle {
+    font-size: 1rem;
+    color: var(--mantine-color-myColor-6, #64748b);
+  }
+
+  .carouselWrapper {
+    padding: 2rem 1rem;
+  }
+
+  .carouselItems {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .carouselCard {
+    max-width: 100%;
+    min-width: unset;
+    width: 100%;
+  }
+
+  .carouselArrow {
+    display: none;
+  }
+
+  .cardTitle {
+    font-size: 1.25rem;
+    color: var(--mantine-color-myColor-9, #0e3877);
+  }
+
+  .cardDescription {
+    font-size: 0.9rem;
+    color: var(--mantine-color-myColor-7, #1e293b);
+  }
+
+  .carouselCard.firstCard .cardTitle {
+    color: white;
+  }
+
+  .carouselCard.firstCard .cardDescription {
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .carouselTitle {
+    color: var(--mantine-color-myColor-9, #0e3877);
+  }
+
+  .carouselSubtitle {
+    color: var(--mantine-color-myColor-6, #64748b);
+  }
+
+  .cardTitle {
+    color: var(--mantine-color-myColor-9, #0e3877);
+  }
+
+  .cardDescription {
+    color: var(--mantine-color-myColor-7, #1e293b);
+  }
+
+  .carouselCard.firstCard .cardTitle {
+    color: white;
+  }
+
+  .carouselCard.firstCard .cardDescription {
+    color: rgba(255, 255, 255, 0.9);
+  }
+}

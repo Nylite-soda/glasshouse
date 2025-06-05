@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "../general/CarouselSection";
 
-const coreValuesData = [
+export const coreValuesData = [
   {
     id: "1",
     number: "1",

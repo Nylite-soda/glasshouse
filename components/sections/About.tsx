@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Button,
@@ -9,6 +11,7 @@ import {
   Box,
 } from "@mantine/core";
 import styles from "@/styles/About.module.css";
+import { useRouter } from "next/navigation";
 
 interface AboutProps {
   title?: string;
@@ -16,7 +19,10 @@ interface AboutProps {
   buttonText?: string;
   imageUrl?: string;
   imageAlt?: string;
-  onButtonClick?: () => void;
+  mh?: string;
+  rev?: boolean;
+  destination?: string;
+  size?: "sm" | "md" | "lg"; // New size prop
 }
 
 const About: React.FC<AboutProps> = ({
@@ -25,64 +31,82 @@ const About: React.FC<AboutProps> = ({
   buttonText = "Get Started",
   imageUrl = "/images/about-logo.jpg",
   imageAlt = "Glass House Waters",
-  onButtonClick,
+  mh,
+  rev = false,
+  destination,
+  size = "lg", // Default to large size for backward compatibility
 }) => {
+  const reverse = rev ? -1 : 0;
+  console.log(reverse);
+  const router = useRouter();
+
+  // Size-specific class names
+  const sizeClasses = {
+    sm: styles.sizeSmall,
+    md: styles.sizeMedium,
+    lg: styles.sizeLarge,
+  };
+
   return (
-    <Box className={styles.aboutSection}>
+    <Box className={`${styles.aboutSection} ${sizeClasses[size]}`}>
       <Container size="xl">
-        <Grid className={styles.grid}>
+        <Grid
+          className={styles.grid + " !flex"}
+          // style={{ flexDirection: reverse }}
+          gutter="xl"
+        >
           {/* Image Column */}
-          <GridCol
-            span={{ base: 12, md: 5, lg: 5 }}
-            order={{ base: 2, md: 1 }}
-            className={styles.imageColumn}
-          >
-            <div className={styles.imageWrapper}>
-              <div className={styles.imageInner}>
-                <img src={imageUrl} alt={imageAlt} className={styles.image} />
-              </div>
-            </div>
+          <GridCol span={{ base: 12, md: 6 }} offset={0}>
+            <Box className={styles.imageColumn}>
+              <Box
+                className={styles.imageWrapper}
+                style={{ maxHeight: mh || "100%" }}
+              >
+                <Box className={styles.imageInner}>
+                  <img src={imageUrl} alt={imageAlt} className={styles.image} />
+                </Box>
+              </Box>
+            </Box>
           </GridCol>
 
           {/* Content Column */}
-          <GridCol
-            span={{ base: 12, md: 7, lg: 6 }}
-            order={{ base: 1, md: 2 }}
-            // offset={{ lg: 1 }}
-            className={styles.contentColumn + " lg:!py-7"}
-          >
-            <Title order={2} className={styles.title}>
-              {title}
-              <div className={styles.titleUnderline} />
-            </Title>
+          <GridCol span={{ base: 12, md: 6 }} order={reverse}>
+            <Box className={styles.contentColumn}>
+              <Title className={styles.title}>
+                {title}
+                <Box className={styles.titleUnderline} />
+              </Title>
 
-            <Text size="lg" className={styles.description}>
-              {description.split("\n\n").map((paragraph, index) => (
-                <React.Fragment key={index}>
-                  {paragraph}
-                  {index < description.split("\n\n").length - 1 && (
-                    <>
-                      <br />
-                      <br />
-                    </>
-                  )}
-                </React.Fragment>
-              ))}
-            </Text>
+              <Text size="lg" className={styles.description}>
+                {description.split(/(\n+)/).map((part, index) => {
+                  if (/^\n+$/.test(part)) {
+                    const breakCount = part.length;
+                    return (
+                      <React.Fragment key={index}>
+                        {Array.from({ length: breakCount }, (_, i) => (
+                          <br key={i} />
+                        ))}
+                      </React.Fragment>
+                    );
+                  }
+                  // If it's actual text content and not empty
+                  if (part.trim()) {
+                    return <span key={index}>{part}</span>;
+                  }
+                  // Skip empty parts
+                  return null;
+                })}
+              </Text>
 
-            <Button
-              variant="gradient"
-              gradient={{
-                from: "var(--mantine-color-myColor-6)",
-                to: "var(--mantine-color-myColor-8)",
-              }}
-              size="xl"
-              radius="md"
-              className={styles.button}
-              onClick={onButtonClick}
-            >
-              {buttonText}
-            </Button>
+              <Button
+                className={styles.button}
+                variant="filled"
+                size="lg"
+                onClick={() => router.push(destination || "#")}
+              >
+                {buttonText}
+              </Button>
+            </Box>
           </GridCol>
         </Grid>
       </Container>

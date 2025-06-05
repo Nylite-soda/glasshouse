@@ -11,6 +11,8 @@ import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
 import "./globals.css";
 import "@mantine/core/styles.css";
+import { Navbar } from "@/components/general/Navbar";
+import Footer from "@/components/sections/Footer";
 
 const myColor: MantineColorsTuple = [
   "#edf3fd",
@@ -51,7 +53,9 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning={true} className="!bg-[#F6F6F6]">
         <MantineProvider theme={theme} defaultColorScheme="light">
+          <Navbar />
           {children}
+          <Footer />
         </MantineProvider>
       </body>
     </html>

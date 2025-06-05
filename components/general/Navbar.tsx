@@ -5,9 +5,10 @@ import { Burger, Button, Container, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import classes from "@/styles/HeaderSimple.module.css";
 import FullLogo from "./FullLogo";
+import { useRouter } from "next/navigation";
 
-const links = [
-  { link: "/home", label: "Home" },
+export const links = [
+  { link: "/", label: "Home" },
   { link: "/about", label: "About Us" },
   { link: "/services", label: "Our Services" },
   { link: "/features", label: "Features" },
@@ -15,6 +16,7 @@ const links = [
 ];
 
 export function Navbar() {
+  const router = useRouter();
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const [scrolled, setScrolled] = useState(false);
@@ -38,6 +40,7 @@ export function Navbar() {
   const handleLinkClick = (link: string) => {
     setActive(link);
     close(); // Close mobile menu when link is clicked
+    router.push(link);
   };
 
   const items = links.map((link, index) => (
@@ -71,10 +74,7 @@ export function Navbar() {
         }`}
       >
         <Container size="lg" className={classes.inner}>
-          <div
-            className={classes.logo}
-            onClick={() => handleLinkClick("/home")}
-          >
+          <div className={classes.logo} onClick={() => handleLinkClick("/")}>
             {FullLogo(28, 28)}
           </div>
 
