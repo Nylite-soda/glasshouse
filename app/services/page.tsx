@@ -28,7 +28,7 @@ interface WaterTreatmentService {
   image: string;
 }
 
-export const carouselData = [
+const carouselData = [
   {
     id: "1",
     title: "Increase Property Value",
