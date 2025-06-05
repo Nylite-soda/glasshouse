@@ -141,11 +141,10 @@ const getGridCols = (count: number) => {
   return { base: 1, sm: 2, md: 3, lg: 3 };
 };
 
-const page = ({
-  services = defaultServices,
-}: {
-  services: WaterTreatmentService[];
-}) => {
+// Remove the props parameter and use default services directly
+export default function ServicesPage() {
+  const services = defaultServices;
+
   return (
     <div>
       <GeneralHero
@@ -233,12 +232,10 @@ const page = ({
       <Container px={0} my="xl" fluid>
         <Ad
           title="Book Your FREE Water Test Today "
-          description="Secure Your Property’s Water Future, Limited Slots Available – Don’t miss out!"
+          description="Secure Your Property's Water Future, Limited Slots Available – Don't miss out!"
           buttonText="Book Now"
         />
       </Container>
     </div>
   );
-};
-
-export default page;
+}
